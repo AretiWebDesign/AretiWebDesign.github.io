@@ -12,7 +12,6 @@
             --light-bg: #f8f9fa;
         }
         
-        /* Λειτουργίες Προσβασιμότητας ΑμεΑ (High Contrast) */
         body.high-contrast {
             --primary-color: #ffff00;
             --text-color: #ffffff;
@@ -33,11 +32,11 @@
             transition: all 0.3s ease;
         }
 
-        /* Μπάρα Προσβασιμότητας στην κορυφή */
+        /* Μπάρα Προσβασιμότητας ΑμεΑ στην κορυφή */
         .accessibility-bar {
             background: #212529;
             color: white;
-            padding: 10px;
+            padding: 12px;
             text-align: center;
             display: flex;
             justify-content: center;
@@ -52,6 +51,7 @@
             cursor: pointer;
             font-weight: bold;
             border-radius: 4px;
+            font-size: 14px;
         }
         .accessibility-bar button:hover {
             background: #004085;
@@ -81,10 +81,9 @@
             text-decoration: none;
             color: var(--text-color);
             font-weight: bold;
-            border-bottom: 2px solid transparent;
         }
         nav a:hover {
-            border-bottom: 2px solid var(--primary-color);
+            color: var(--primary-color);
         }
 
         main {
@@ -126,48 +125,48 @@
             border-left: 6px solid #ffff00;
         }
 
-        /* ΕΠΙΣΗΜΟ ΕΜΦΑΝΕΣ BANNER ΕΣΠΑ / ΔΥΠΑ */
-        .espa-container {
+        /* ΥΠΟΧΡΕΩΤΙΚΟ FOOTER ΔΗΜΟΣΙΟΤΗΤΑΣ ΕΣΠΑ / ΔΥΠΑ */
+        .espa-footer {
             background: #ffffff;
-            color: #000000;
-            border: 4px solid #0056b3;
-            padding: 25px;
-            margin: 40px auto;
-            max-width: 840px;
+            color: #212529;
+            border-top: 3px solid #0056b3;
+            padding: 30px 20px;
+            margin-top: 50px;
             text-align: center;
-            border-radius: 8px;
         }
-        .espa-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .espa-text {
+            font-size: 14px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto 25px auto;
+            text-align: justify;
         }
-        .espa-flex {
+        .espa-logos-flex {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
+            gap: 40px;
             flex-wrap: wrap;
-            gap: 20px;
         }
-        .logo-block {
-            border: 2px solid #ccc;
-            padding: 10px 20px;
-            font-weight: bold;
-            font-size: 18px;
-            background: #f8f9fa;
-            min-width: 150px;
+        .espa-logos-flex img {
+            height: auto;
+            max-width: 100%;
+            vertical-align: middle;
         }
-        .dypa-blue { color: #0056b3; }
-        .espa-blue { color: #003399; font-style: italic; }
+        .img-dypa {
+            max-height: 90px;
+        }
+        .img-espa {
+            max-height: 75px;
+        }
 
-        footer {
+        footer-credits {
             background: #212529;
             color: white;
             text-align: center;
-            padding: 20px;
-            font-size: 14px;
+            padding: 15px;
+            font-size: 13px;
+            display: block;
         }
     </style>
 </head>
@@ -176,6 +175,7 @@
     <div class="accessibility-bar" aria-label="Επιλογές Προσβασιμότητας">
         <button onclick="toggleContrast()">♿ Αντίθεση ΑμεΑ (High Contrast)</button>
         <button onclick="toggleText()">🔍 Μεγέθυνση Γραμματοσειράς</button>
+        <button onclick="speakSite()">🔊 Φωνητική Ανάγνωση</button>
     </div>
 
     <header>
@@ -184,58 +184,79 @@
             <ul>
                 <li><a href="#about">Σχετικά</a></li>
                 <li><a href="#services">Υπηρεσίες</a></li>
-                <li><a href="#accessibility">ΑμεΑ</a></li>
+                <li><a href="#accessibility">Προσβασιμότητα</a></li>
                 <li><a href="#contact">Επικοινωνία</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <section id="about">
             <h1>Ψηφιακές Εφαρμογές Υψηλών Προδιαγραφών</h1>
-            <p>Ανάπτυξη σύγχρονων, γρήγορων και πλήρως προσβάσιμων ψηφιακών προϊόντων προσαρμοσμένων στις ανάγκες της δικής σας επιχείρησής.</p>
+            <p>Ανάπτυξη σύγχρονων, γρήγορων και πλήρως προσβάσιμων ψηφιακών προϊόντων προσαρμοσμένων στις ανάγκες της δικής σας επιχείρησης.</p>
         </section>
 
         <section id="services">
             <h2>Οι Υπηρεσίες Μας</h2>
             <ul class="services-grid">
-                <li><strong>Κατασκευή Ιστοσελίδων & E-shops:</strong> Responsive σχεδιασμός για άριστη εμφάνιση σε κινητά και tablet.</li>
+                <li><strong>Κατασκευή Ιστοσελίδων & E-shops:</strong> Responsive σχεδιασμός για άριστη εμφάνιση σε όλες τις συσκευές.</li>
                 <li><strong>Εξατομικευμένες Εφαρμογές:</strong> Custom Web Apps κομμένα και ραμμένα στα μέτρα σας.</li>
                 <li><strong>Δημιουργία QR Codes:</strong> Έξυπνα QR για μενού, καταστήματα και ψηφιακές κάρτες.</li>
-                <li><strong>Standalone Apps:</strong> Αυτόνομες εφαρμογές για κάθε ψηφιακή πλατφόρμα.</li>
+                <li><strong>Standalone Apps:</strong> Αυτόνομες εφαρμογές για κάθε πλατφόρμα.</li>
             </ul>
         </section>
 
         <section id="accessibility" class="accessibility-notice">
-            <h2>Δήλωση Ψηφιακής Προσβασιμότητας</h2>
-            <p><strong>Ενημέρωση ελέγχου:</strong> Η επιχείρησή μας υποστηρίζει πλήρως την ισότητα στην πληροφορία. <strong>Λόγω τεχνικών και πολεοδομικών περιορισμών του κτιρίου, δεν είναι δυνατή η τοποθέτηση φυσικής ράμπας ΑμεΑ στην έδρα και ο χώρος δεν δέχεται κοινό.</strong></p>
-            <p>Η εξυπηρέτηση των πελατών και των ατόμων με αναπηρία γίνεται <strong>100% εξ αποστάσεως και ψηφιακά</strong> μέσω της παρούσας ιστοσελίδας, email, γραπτών μηνυμάτων και τηλεφώνου.</p>
+            <h2>Δήλωση Ψηφιακής Προσβασιμότητας (ΑμεΑ)</h2>
+            <p>Η επιχείρησή μας λειτουργεί ως <strong>αμιγώς ψηφιακό περιβάλλον ανάπτυξης λογισμικού</strong> και υποστηρίζει πλήρως την ισότητα στην πληροφορία και την εξυπηρέτηση.</p>
+            <p>Η ενημέρωση, η επικοινωνία και η παροχή όλων των υπηρεσιών μας προς το κοινό, και ιδιαίτερα προς τα άτομα με αναπηρία, πραγματοποιείται <strong>100% εξ αποστάσεως και ψηφιακά</strong> με τους ακόλουθους τρόπους:</p>
+            <ul>
+                <li>Μέσω της παρούσας προσβάσιμης ιστοσελίδας μας.</li>
+                <li>Μέσω Ηλεκτρονικού Ταχυδρομείου (Email) για άμεση γραπτή επικοινωνία.</li>
+                <li>Μέσω Τηλεφώνου και ψηφιακών μηνυμάτων (WhatsApp / Viber).</li>
+            </ul>
         </section>
 
         <section id="contact">
             <h2>Εξ Αποστάσεως Επικοινωνία</h2>
+            <p>Είμαστε στη διάθεσή σας για οποιαδήποτε ψηφιακή εξυπηρέτηση:</p>
             <p><strong>Email:</strong> <a href="mailto:aretikin@gmail.com">aretikin@gmail.com</a></p>
             <p><strong>Τηλέφωνο / WhatsApp:</strong> <a href="tel:+306981212311">+30 698 121 2311</a></p>
         </section>
-
-        <div class="espa-container">
-            <div class="espa-title">Με τη χρηματοδότηση της Ελλάδας και της Ευρωπαϊκής Ένωσης</div>
-            <div class="espa-flex">
-                <div class="logo-block"><span class="dypa-blue">ΔΥΠΑ</span></div>
-                <div class="logo-block">ΕΛΛΗΝΙΚΗ ΔΗΜΟΚΡΑΤΙΑ</div>
-                <div class="logo-block"><span class="espa-blue">ΕΣΠΑ 2021-2027</span></div>
-            </div>
-        </div>
     </main>
 
-    <footer>
-        <p>&copy; 2026 Αρετή Νικολακοπούλου. Με επιφύλαξη παντός δικαιώματος.</p>
-    </footer>
+    <div class="espa-footer">
+        <div class="espa-text">
+            Η επιχείρηση <strong>Αρετή Νικολακοπούλου - Κατασκευή Ιστοσελίδων</strong> εντάχθηκε στο "Πρόγραμμα ενίσχυσης της επιχειρηματικότητας για ανέργους ηλικίας 30-59 ετών με έμφαση στις γυναίκες". Το πρόγραμμα συγχρηματοδοτείται από την Ελλάδα και την Ευρωπαϊκή Ένωση μέσω του Επιχειρησιακού Προγράμματος "Ανθρώπινο Δυναμικό και Κοινωνική Συνοχή" (ΕΣΠΑ 2021-2027).
+        </div>
+        <div class="espa-logos-flex">
+            <img src="DYPA_logo.png" class="img-dypa" alt="Δημόσια Υπηρεσία Απασχόλησης - ΔΥΠΑ">
+            <img src="ΕΣΠΑ_visual_id_ESPA (1).jpg" class="img-espa" alt="Με τη συγχρηματοδότηση της Ευρωπαϊκής Ένωσης - ΕΣΠΑ 2021-2027">
+        </div>
+    </div>
+
+    <footer-credits>
+        &copy; 2026 Αρετή Νικολακοπούλου. Με επιφύλαξη παντός δικαιώματος.
+    </footer-credits>
 
     <script>
         function toggleContrast() { document.body.classList.toggle('high-contrast'); }
         function toggleText() { document.body.classList.toggle('large-text'); }
+        
+        function speakSite() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                var textToSpeak = document.getElementById('main-content').innerText;
+                var utterance = new SpeechSynthesisUtterance(textToSpeak);
+                utterance.lang = 'el-GR';
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Το πρόγραμμα περιήγησής σας δεν υποστηρίζει φωνητική ανάγνωση.");
+            }
+        }
     </script>
+
+    <script>(function(_d,_w){var _b=_d.getElementsByTagName('body')[0];if(_b){var _s=_d.createElement('script');_s.setAttribute('src','https://cdn.userway.org/widget.js');_s.setAttribute('data-account','free-widget');_b.appendChild(_s);}})(document,window);</script>
 
 </body>
 </html>
