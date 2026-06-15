@@ -6,133 +6,185 @@
     <title>Αρετή Νικολακοπούλου - Κατασκευή Ιστοσελίδων</title>
     <style>
         :root {
-            --primary-color: #1a73e8;
-            --text-color: #202124;
+            --primary-color: #0056b3;
+            --text-color: #212529;
             --bg-color: #ffffff;
             --light-bg: #f8f9fa;
         }
+        
+        /* Λειτουργίες Προσβασιμότητας ΑμεΑ (High Contrast) */
+        body.high-contrast {
+            --primary-color: #ffff00;
+            --text-color: #ffffff;
+            --bg-color: #000000;
+            --light-bg: #121212;
+        }
+        body.large-text {
+            font-size: 1.3rem;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
             color: var(--text-color);
             background-color: var(--bg-color);
+            transition: all 0.3s ease;
         }
+
+        /* Μπάρα Προσβασιμότητας στην κορυφή */
+        .accessibility-bar {
+            background: #212529;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .accessibility-bar button {
+            background: #0056b3;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        .accessibility-bar button:hover {
+            background: #004085;
+        }
+
         header {
             background: var(--light-bg);
-            padding: 20px;
-            border-bottom: 2px solid #e0e0e0;
+            padding: 30px 20px;
+            border-bottom: 3px solid var(--primary-color);
+            text-align: center;
         }
         .logo {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
             color: var(--primary-color);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         nav ul {
             list-style: none;
             padding: 0;
             margin: 0;
             display: flex;
+            justify-content: center;
             gap: 20px;
-            flex-wrap: wrap;
         }
         nav a {
             text-decoration: none;
             color: var(--text-color);
             font-weight: bold;
+            border-bottom: 2px solid transparent;
         }
         nav a:hover {
-            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
         }
+
         main {
             padding: 40px 20px;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
         section {
-            margin-bottom: 45px;
-        }
-        h1, h2 {
-            color: var(--primary-color);
-        }
-        .services-list {
-            list-style: none;
-            padding: 0;
-        }
-        .services-list li {
             background: var(--light-bg);
-            margin-bottom: 10px;
-            padding: 15px;
-            border-radius: 6px;
-            border-left: 4px solid var(--primary-color);
-            font-size: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 0;
+            list-style: none;
+        }
+        @media (max-width: 600px) {
+            .services-grid { grid-template-columns: 1fr; }
+        }
+        .services-grid li {
+            background: var(--bg-color);
+            padding: 20px;
+            border-left: 5px solid var(--primary-color);
+            border-radius: 4px;
+        }
+
         .accessibility-notice {
             background-color: #e8f0fe;
-            border-left: 5px solid #1a73e8;
-            padding: 25px;
-            margin-top: 20px;
-            border-radius: 6px;
+            border-left: 6px solid #0056b3;
         }
-        .contact-info p {
-            font-size: 17px;
-            margin: 10px 0;
+        body.high-contrast .accessibility-notice {
+            background: #121212;
+            border-left: 6px solid #ffff00;
         }
-        .contact-info a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: bold;
-        }
-        
-        /* Μπάρα Δημοσιότητας ΕΣΠΑ / ΔΥΠΑ */
-        .espa-banner {
+
+        /* ΕΠΙΣΗΜΟ ΕΜΦΑΝΕΣ BANNER ΕΣΠΑ / ΔΥΠΑ */
+        .espa-container {
             background: #ffffff;
-            padding: 20px;
-            border-top: 1px solid #dcdcdc;
+            color: #000000;
+            border: 4px solid #0056b3;
+            padding: 25px;
+            margin: 40px auto;
+            max-width: 840px;
             text-align: center;
+            border-radius: 8px;
         }
-        .espa-banner p {
-            font-size: 13px;
-            color: #5f6368;
-            margin-bottom: 15px;
+        .espa-title {
+            font-size: 16px;
             font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .espa-logos {
-            display: block;
-            text-align: center;
+        .espa-flex {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
         }
-        .espa-logos img {
-            max-height: 70px;
-            max-width: 100%;
-            height: auto;
-            margin: 10px 20px;
-            vertical-align: middle;
+        .logo-block {
+            border: 2px solid #ccc;
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 18px;
+            background: #f8f9fa;
+            min-width: 150px;
         }
-        
+        .dypa-blue { color: #0056b3; }
+        .espa-blue { color: #003399; font-style: italic; }
+
         footer {
-            background: var(--text-color);
+            background: #212529;
             color: white;
             text-align: center;
-            padding: 25px;
+            padding: 20px;
             font-size: 14px;
-        }
-        a:focus, button:focus {
-            outline: 3px solid var(--primary-color);
-            outline-offset: 2px;
         }
     </style>
 </head>
 <body>
 
+    <div class="accessibility-bar" aria-label="Επιλογές Προσβασιμότητας">
+        <button onclick="toggleContrast()">♿ Αντίθεση ΑμεΑ (High Contrast)</button>
+        <button onclick="toggleText()">🔍 Μεγέθυνση Γραμματοσειράς</button>
+    </div>
+
     <header>
         <div class="logo">Αρετή Νικολακοπούλου - Κατασκευή Ιστοσελίδων</div>
-        <nav aria-label="Κεντρικό Μενού">
+        <nav>
             <ul>
                 <li><a href="#about">Σχετικά</a></li>
                 <li><a href="#services">Υπηρεσίες</a></li>
-                <li><a href="#accessibility">Προσβασιμότητα ΑμεΑ</a></li>
+                <li><a href="#accessibility">ΑμεΑ</a></li>
                 <li><a href="#contact">Επικοινωνία</a></li>
             </ul>
         </nav>
@@ -140,52 +192,50 @@
 
     <main>
         <section id="about">
-            <h1>Ψηφιακές Λύσεις Υψηλών Προδιαγραφών</h1>
-            <p>Καλώς ήρθατε. Σχεδιάζουμε και αναπτύσσουμε σύγχρονα, ταχύτατα και πλήρως προσβάσιμα ψηφιακά περιβάλλοντα που ενισχύουν την παρουσία της επιχείρησής σας στην αγορά.</p>
+            <h1>Ψηφιακές Εφαρμογές Υψηλών Προδιαγραφών</h1>
+            <p>Ανάπτυξη σύγχρονων, γρήγορων και πλήρως προσβάσιμων ψηφιακών προϊόντων προσαρμοσμένων στις ανάγκες της δικής σας επιχείρησής.</p>
         </section>
 
         <section id="services">
             <h2>Οι Υπηρεσίες Μας</h2>
-            <ul class="services-list">
-                <li><strong>Κατασκευή Ιστοσελίδων & E-shops:</strong> Μοντέρνες ιστοσελίδες και ηλεκτρονικά καταστήματα, πλήρως responsive για κινητά και tablet.</li>
-                <li><strong>Εξατομικευμένες Εφαρμογές (Custom Web Apps):</strong> Ανάπτυξη custom λογισμικού προσαρμοσμένου ακριβώς στις ανάγκες της δικής σας επιχείρησης.</li>
-                <li><strong>Δημιουργία QR Codes:</strong> Έξυπνες λύσεις QR για μενού, ψηφιακές κάρτες, συνδέσμους και προωθητικές ενέργειες.</li>
-                <li><strong>Standalone Apps:</strong> Σχεδιασμός και υλοποίηση αυτόνομων εφαρμογών για σταθερές ή φορητές συσκευές.</li>
+            <ul class="services-grid">
+                <li><strong>Κατασκευή Ιστοσελίδων & E-shops:</strong> Responsive σχεδιασμός για άριστη εμφάνιση σε κινητά και tablet.</li>
+                <li><strong>Εξατομικευμένες Εφαρμογές:</strong> Custom Web Apps κομμένα και ραμμένα στα μέτρα σας.</li>
+                <li><strong>Δημιουργία QR Codes:</strong> Έξυπνα QR για μενού, καταστήματα και ψηφιακές κάρτες.</li>
+                <li><strong>Standalone Apps:</strong> Αυτόνομες εφαρμογές για κάθε ψηφιακή πλατφόρμα.</li>
             </ul>
         </section>
 
         <section id="accessibility" class="accessibility-notice">
-            <h2>Δήλωση Ψηφιακής Προσβασιμότητας (ΑμεΑ)</h2>
-            <p><strong>Σημαντική Ενημέρωση:</strong> Η επιχείρησή μας δεσμεύεται να παρέχει ισότιμη πρόσβαση στις ψηφιακές της υπηρεσίες για όλους τους χρήστες. <strong>Λόγω αντικειμενικής, τεχνικής και πολεοδομικής αδυναμίας του κτιρίου της έδρας μας, δεν είναι εφικτή η εγκατάσταση φυσικής ράμπας ΑμεΑ, και ο φυσικός χώρος ΔΕΝ είναι επισκέψιμος από το κοινό.</strong></p>
-            <p>Για τον λόγο αυτό, η εξυπηρέτηση όλων των πελατών μας, και ιδιαίτερα των ατόμων με αναπηρία, πραγματοποιείται <strong>αποκλειστικά εξ αποστάσεως και ψηφιακά</strong> μέσω:</p>
-            <ul>
-                <li>Της παρούσας προσβάσιμης ιστοσελίδας μας.</li>
-                <li>Ηλεκτρονικού ταχυδρομείου (Email).</li>
-                <li>Τηλεφωνικής επικοινωνίας και μηνυμάτων (WhatsApp).</li>
-            </ul>
+            <h2>Δήλωση Ψηφιακής Προσβασιμότητας</h2>
+            <p><strong>Ενημέρωση ελέγχου:</strong> Η επιχείρησή μας υποστηρίζει πλήρως την ισότητα στην πληροφορία. <strong>Λόγω τεχνικών και πολεοδομικών περιορισμών του κτιρίου, δεν είναι δυνατή η τοποθέτηση φυσικής ράμπας ΑμεΑ στην έδρα και ο χώρος δεν δέχεται κοινό.</strong></p>
+            <p>Η εξυπηρέτηση των πελατών και των ατόμων με αναπηρία γίνεται <strong>100% εξ αποστάσεως και ψηφιακά</strong> μέσω της παρούσας ιστοσελίδας, email, γραπτών μηνυμάτων και τηλεφώνου.</p>
         </section>
 
-        <section id="contact" class="contact-info">
-            <h2>Εξ Αποστάσεως Εξυπηρέτηση & Επικοινωνία</h2>
-            <p>Είμαστε άμεσα διαθέσιμοι για την ψηφιακή σας εξυπηρέτηση:</p>
+        <section id="contact">
+            <h2>Εξ Αποστάσεως Επικοινωνία</h2>
             <p><strong>Email:</strong> <a href="mailto:aretikin@gmail.com">aretikin@gmail.com</a></p>
             <p><strong>Τηλέφωνο / WhatsApp:</strong> <a href="tel:+306981212311">+30 698 121 2311</a></p>
         </section>
+
+        <div class="espa-container">
+            <div class="espa-title">Με τη χρηματοδότηση της Ελλάδας και της Ευρωπαϊκής Ένωσης</div>
+            <div class="espa-flex">
+                <div class="logo-block"><span class="dypa-blue">ΔΥΠΑ</span></div>
+                <div class="logo-block">ΕΛΛΗΝΙΚΗ ΔΗΜΟΚΡΑΤΙΑ</div>
+                <div class="logo-block"><span class="espa-blue">ΕΣΠΑ 2021-2027</span></div>
+            </div>
+        </div>
     </main>
 
-    <div class="espa-banner">
-        <p>Με τη χρηματοδότηση της Ελλάδας και της Ευρωπαϊκής Ένωσης</p>
-        <div class="espa-logos">
-            <img src="https://www.dypa.gov.gr/images/dypa_logo_header.png" alt="Λογότυπο ΔΥΠΑ - Δημόσια Υπηρεσία Απασχόλησης">
-            <img src="https://www.espa.gr/el/PublishingImages/espa_21-27_logo_color.jpg" alt="Λογότυπο ΕΣΠΑ 2021-2027 - Με τη συγχρηματοδότηση της Ευρωπαϊκής Ένωσης">
-        </div>
-    </div>
-
     <footer>
-        <p>&copy; 2026 Αρετή Νικολακοπούλου - Κατασκευή Ιστοσελίδων. Με επιφύλαξη παντός δικαιώματος.</p>
+        <p>&copy; 2026 Αρετή Νικολακοπούλου. Με επιφύλαξη παντός δικαιώματος.</p>
     </footer>
 
-    <script>(function(_d,_w){var _b=_d.getElementsByTagName('body')[0];if(_b){var _s=_d.createElement('script');_s.setAttribute('src','https://cdn.userway.org/widget.js');_s.setAttribute('data-account','free-widget');_b.appendChild(_s);}})(document,window);</script>
+    <script>
+        function toggleContrast() { document.body.classList.toggle('high-contrast'); }
+        function toggleText() { document.body.classList.toggle('large-text'); }
+    </script>
 
 </body>
 </html>
